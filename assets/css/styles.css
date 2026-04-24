@@ -643,15 +643,35 @@ h3 {
 
 .contact-panel__items {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   margin-top: 28px;
 }
 
+.contact-panel__caption {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-panel__stack {
+  display: grid;
+  gap: 10px;
+  width: min(100%, 28rem);
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(10, 12, 16, 0.12);
+  backdrop-filter: blur(4px);
+}
+
 .contact-panel__link {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: flex-start;
   min-height: 0;
+  width: 100%;
   padding: 0;
   color: #fff;
   font-size: 1.1rem;
@@ -672,6 +692,11 @@ h3 {
 
 .contact-panel__link::before {
   content: none;
+}
+
+.contact-panel__stack .contact-panel__link + .contact-panel__link {
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .callback-form {
@@ -718,6 +743,7 @@ h3 {
 .callback-form__note {
   margin: 0;
   font-size: 0.88rem;
+  text-align: center;
 }
 
 .callback-form__note a {
@@ -750,6 +776,7 @@ h3 {
 .footer__contact {
   font-size: 1.05rem;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .footer__bottom {
@@ -886,6 +913,13 @@ h3 {
     width: min(calc(100% - 28px), var(--container));
   }
 
+  .logo {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+  }
+
   .logo__image,
   .logo--footer .logo__image {
     width: 104px;
@@ -898,14 +932,14 @@ h3 {
 
   .header__phone {
     margin-left: auto;
-    font-size: 1.02rem;
+    font-size: 0.96rem;
   }
 
   .header__row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    gap: 6px 10px;
+    gap: 4px 8px;
   }
 
   .logo {
@@ -916,7 +950,7 @@ h3 {
     grid-column: 2;
     justify-self: end;
     margin-left: 0;
-    padding-left: 12px;
+    padding-left: 10px;
     line-height: 1;
   }
 
@@ -924,6 +958,7 @@ h3 {
     grid-column: 1 / -1;
     gap: 16px;
     padding-top: 0;
+    font-size: 0.92rem;
   }
 
   h1 {
@@ -962,6 +997,14 @@ h3 {
     line-height: 1.6;
   }
 
+  .hero__lead br,
+  .feature-card p br,
+  .process-card p br,
+  .case-card__lead br,
+  .callback-form__note br {
+    display: none;
+  }
+
   .hero__title-line {
     white-space: normal;
   }
@@ -993,27 +1036,28 @@ h3 {
   }
 
   .feature-card {
-    grid-template-columns: 68px 1fr;
-    gap: 12px;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 14px;
     padding: 20px 18px;
   }
 
   .feature-card__icon {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
   }
 
   .feature-card h2 {
     font-size: 1rem;
     line-height: 1.02;
     min-height: 0;
+    max-width: 12ch;
   }
 
   .feature-card p {
     margin-top: 6px;
-    max-width: none;
+    max-width: 28ch;
     font-size: 0.92rem;
-    line-height: 1.5;
+    line-height: 1.48;
   }
 
   .service-grid {
@@ -1048,25 +1092,27 @@ h3 {
   }
 
   .process-card__body {
-    padding: 22px 16px 20px 68px;
+    padding: 20px 10px 18px 54px;
   }
 
   .process-card__number {
     left: 14px;
-    top: 16px;
-    font-size: 2.45rem;
+    top: 15px;
+    font-size: 2rem;
   }
 
   .process-card__body h3 {
     min-height: 0;
     font-size: 1.28rem;
+    max-width: none;
+    margin-right: 8px;
   }
 
   .process-card__body p {
-    margin-top: 10px;
+    margin-top: 8px;
     font-size: 0.95rem;
-    line-height: 1.55;
-    max-width: none;
+    line-height: 1.48;
+    max-width: 34ch;
   }
 
   .case-card__body {
@@ -1085,25 +1131,52 @@ h3 {
 
   .contact-panel,
   .callback-form {
-    padding: 22px 16px;
+    padding: 20px 15px;
+  }
+
+  .contact-panel {
+    display: grid;
+    align-content: start;
+    background:
+      linear-gradient(135deg, #e24913 0%, #cf4413 74%, #15171a 74%, #15171a 100%);
+  }
+
+  .contact-panel h2 {
+    max-width: 7ch;
+    font-size: 1.82rem;
   }
 
   .contact-panel__lead {
-    max-width: none;
-    font-size: 0.98rem;
-    line-height: 1.55;
+    max-width: 36ch;
+    margin-top: 10px;
+    font-size: 0.92rem;
+    line-height: 1.34;
   }
 
   .contact-panel__items {
     gap: 10px;
-    margin-top: 22px;
+    margin-top: 12px;
+  }
+
+  .contact-panel__caption {
+    font-size: 0.76rem;
+  }
+
+  .contact-panel__stack {
+    gap: 8px;
+    width: min(100%, 24rem);
+    padding: 12px;
   }
 
   .contact-panel__link {
-    width: auto;
+    width: 100%;
     max-width: 100%;
     padding: 0;
-    font-size: 0.98rem;
+    border: none;
+    background: transparent;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
   }
 
   .callback-form {
@@ -1132,7 +1205,7 @@ h3 {
   }
 
   .header__phone {
-    font-size: 1.06rem;
+    font-size: 0.9rem;
     font-weight: 800;
   }
 
@@ -1141,12 +1214,119 @@ h3 {
   }
 
   .footer {
-    padding-top: 24px;
+    padding-top: 26px;
     margin-top: 0;
     border-top: none;
+    box-shadow: none;
   }
 
   .footer__row {
-    padding-top: 8px;
+    padding-top: 0;
+    border-top: none;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    justify-items: start;
+    padding: 10px 0 8px;
+  }
+
+  .logo {
+    width: 100%;
+  }
+
+  .logo__image {
+    width: 96px;
+  }
+
+  .logo__text {
+    max-width: 9ch;
+    font-size: 0.74rem;
+    line-height: 1;
+  }
+
+  .header__phone {
+    grid-column: 1;
+    justify-self: end;
+    padding-left: 14px;
+    font-size: 0.82rem;
+    margin-top: -8px;
+  }
+
+  .nav {
+    gap: 14px;
+    font-size: 0.86rem;
+    padding: 0 0 1px;
+  }
+
+  .hero__content {
+    padding-top: 18px;
+  }
+
+  .hero__media {
+    min-height: 196px;
+  }
+
+  .contact-panel {
+    padding: 16px 13px 18px;
+    background:
+      linear-gradient(135deg, #e45a2a 0%, #d64915 79%, #15171a 79%, #15171a 100%);
+  }
+
+  .contact-panel h2 {
+    max-width: 6.4ch;
+    font-size: 1.62rem;
+    line-height: 0.9;
+  }
+
+  .contact-panel__lead {
+    max-width: none;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    line-height: 1.32;
+  }
+
+  .contact-panel__items {
+    margin-top: 10px;
+  }
+
+  .contact-panel__stack {
+    width: 100%;
+    padding: 8px 10px;
+  }
+
+  .contact-panel__link {
+    font-size: 0.88rem;
+  }
+
+  .feature-card {
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+  }
+
+  .feature-card__icon {
+    margin: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    justify-self: center;
+  }
+
+  .feature-card > div {
+    width: 100%;
+  }
+
+  .feature-card h2 {
+    max-width: 12ch;
+  }
+
+  .feature-card p {
+    font-size: 0.9rem;
+    max-width: 30ch;
   }
 }
