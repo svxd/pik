@@ -133,6 +133,7 @@ img {
   position: relative;
   padding-left: 18px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .header__phone::before {
@@ -351,10 +352,10 @@ h3 {
 
 .feature-card p {
   margin: 8px 0 0;
-  max-width: 32ch;
+  max-width: 46ch;
   color: #d2d6dc;
   font-size: 0.98rem;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .feature-card__icon {
@@ -440,44 +441,6 @@ h3 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.slider-button {
-  position: relative;
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.04);
-  cursor: pointer;
-  transition:
-    border-color 180ms ease,
-    background 180ms ease,
-    transform 180ms ease;
-}
-
-.slider-button:hover {
-  border-color: rgba(223, 74, 20, 0.5);
-  background: rgba(223, 74, 20, 0.12);
-  transform: translateY(-1px);
-}
-
-.slider-button::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid var(--accent);
-  border-right: 2px solid var(--accent);
-}
-
-.slider-button--next::before {
-  transform: translate(-62%, -50%) rotate(45deg);
-}
-
-.slider-button--prev::before {
-  transform: translate(-38%, -50%) rotate(-135deg);
-}
-
 .service-card,
 .process-card,
 .case-card {
@@ -503,7 +466,7 @@ h3 {
   display: flex;
   flex-direction: column;
   min-height: 236px;
-  padding: 24px 24px 26px;
+  padding: 20px 24px 22px;
 }
 
 .service-card__body h3 {
@@ -511,39 +474,7 @@ h3 {
 }
 
 .service-card p {
-  margin: 14px 0 0;
-}
-
-.card-arrow {
-  position: absolute;
-  right: 24px;
-  bottom: 24px;
-  width: 26px;
-  height: 10px;
-}
-
-.card-arrow::before,
-.card-arrow::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.card-arrow::before {
-  left: 0;
-  width: 20px;
-  height: 2px;
-  background: var(--accent);
-}
-
-.card-arrow::after {
-  right: 0;
-  width: 7px;
-  height: 7px;
-  border-top: 2px solid var(--accent);
-  border-right: 2px solid var(--accent);
-  transform: translateY(-50%) rotate(45deg);
+  margin: 6px 0 0;
 }
 
 .process-grid {
@@ -576,7 +507,7 @@ h3 {
 }
 
 .process-card__body {
-  padding: 28px 24px 24px 104px;
+  padding: 20px 22px 18px 104px;
 }
 
 .process-card__body h3 {
@@ -585,12 +516,12 @@ h3 {
 }
 
 .process-card__body p {
-  margin: 12px 0 0;
+  margin: 6px 0 0;
 }
 
 .case-card {
   display: grid;
-  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
   overflow: hidden;
 }
 
@@ -616,10 +547,11 @@ h3 {
 }
 
 .case-card__lead {
-  max-width: 36ch;
+  max-width: 48ch;
   margin: 16px 0 0;
   color: #eef1f4;
   font-size: 1.05rem;
+  line-height: 1.55;
 }
 
 .case-card__meta {
@@ -667,7 +599,7 @@ h3 {
   margin-top: 0;
   padding: 46px 0;
   border-top: none;
-  border-bottom: 1px solid var(--line);
+  border-bottom: none;
   background: #15171a;
 }
 
@@ -702,7 +634,7 @@ h3 {
 }
 
 .contact-panel__lead {
-  max-width: 40ch;
+  max-width: 42ch;
   margin: 18px 0 0;
   color: rgba(255, 255, 255, 0.86);
   font-size: 1.02rem;
@@ -716,8 +648,30 @@ h3 {
 }
 
 .contact-panel__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 0;
+  padding: 0;
+  color: #fff;
   font-size: 1.1rem;
   font-weight: 700;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease;
+}
+
+.contact-panel__link:hover {
+  color: #fff4ef;
+  text-decoration-color: currentColor;
+}
+
+.contact-panel__link::before {
+  content: none;
 }
 
 .callback-form {
@@ -778,6 +732,7 @@ h3 {
 
 .footer {
   background: #0b0c0e;
+  border-top: none;
 }
 
 .footer__row {
@@ -785,7 +740,7 @@ h3 {
   grid-template-columns: minmax(0, 1fr) auto auto;
   gap: 24px;
   align-items: center;
-  min-height: 116px;
+  min-height: 92px;
 }
 
 .logo--footer .logo__image {
@@ -911,7 +866,7 @@ h3 {
   }
 
   .section-title__actions {
-    display: inline-flex;
+    display: none;
   }
 
   .contact-panel,
@@ -943,7 +898,32 @@ h3 {
 
   .header__phone {
     margin-left: auto;
-    font-size: 0.96rem;
+    font-size: 1.02rem;
+  }
+
+  .header__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 6px 10px;
+  }
+
+  .logo {
+    min-width: 0;
+  }
+
+  .header__phone {
+    grid-column: 2;
+    justify-self: end;
+    margin-left: 0;
+    padding-left: 12px;
+    line-height: 1;
+  }
+
+  .nav {
+    grid-column: 1 / -1;
+    gap: 16px;
+    padding-top: 0;
   }
 
   h1 {
@@ -1013,8 +993,8 @@ h3 {
   }
 
   .feature-card {
-    grid-template-columns: 72px 1fr;
-    gap: 14px;
+    grid-template-columns: 68px 1fr;
+    gap: 12px;
     padding: 20px 18px;
   }
 
@@ -1031,8 +1011,9 @@ h3 {
 
   .feature-card p {
     margin-top: 6px;
-    font-size: 0.95rem;
-    line-height: 1.55;
+    max-width: none;
+    font-size: 0.92rem;
+    line-height: 1.5;
   }
 
   .service-grid {
@@ -1067,13 +1048,13 @@ h3 {
   }
 
   .process-card__body {
-    padding: 22px 16px 20px 82px;
+    padding: 22px 16px 20px 68px;
   }
 
   .process-card__number {
-    left: 16px;
+    left: 14px;
     top: 16px;
-    font-size: 2.6rem;
+    font-size: 2.45rem;
   }
 
   .process-card__body h3 {
@@ -1085,6 +1066,7 @@ h3 {
     margin-top: 10px;
     font-size: 0.95rem;
     line-height: 1.55;
+    max-width: none;
   }
 
   .case-card__body {
@@ -1118,12 +1100,16 @@ h3 {
   }
 
   .contact-panel__link {
-    font-size: 1rem;
+    width: auto;
+    max-width: 100%;
+    padding: 0;
+    font-size: 0.98rem;
   }
 
   .callback-form {
     gap: 14px;
     padding-top: 18px;
+    padding-bottom: 10px;
   }
 
   .callback-form__field input {
@@ -1133,13 +1119,34 @@ h3 {
   .callback-form__note {
     font-size: 0.84rem;
     line-height: 1.5;
+    margin-bottom: 0;
+    text-align: center;
   }
 
   .footer__row {
-    padding: 22px 0 10px;
+    padding: 14px 0 10px;
   }
 
   .footer__contact {
     font-size: 0.98rem;
+  }
+
+  .header__phone {
+    font-size: 1.06rem;
+    font-weight: 800;
+  }
+
+  .contact-section {
+    padding-bottom: 24px;
+  }
+
+  .footer {
+    padding-top: 24px;
+    margin-top: 0;
+    border-top: none;
+  }
+
+  .footer__row {
+    padding-top: 8px;
   }
 }
